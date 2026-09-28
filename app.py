@@ -1,8 +1,14 @@
+import os
 from flask import Flask, render_template, request
 from graph import graph
 from datetime import datetime
 
-app = Flask(__name__)
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "templates"),
+    static_folder=os.path.join(BASE_DIR, "static"),
+)
 
 # Store last 5 searches
 history = []
